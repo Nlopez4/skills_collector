@@ -21,9 +21,36 @@
       </span>
     </a>
   </div>
+  <!--form for adding skill-->
+  <form class="mb-5" action="{% url 'skill_create' gym.pk %}" method="post">
+      {% csrf_token %}
+      <div class="field has-addons">
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            name="technique"
+            placeholder="Technique Used"
+            required
+          />
+        </div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            name="class"
+            placeholder="Class"
+            required
+          />
+        </div>
+        <div class="control">
+          <input class="button is-primary" type="submit" value="Add" />
+        </div>
+      </div>
+    </form>
+  <!-- new skills -->
   <div class="detail__skills mb-5">
     <h3 class="title is-3">Techniques Used</h3>
-    <!-- new skills -->
     {% for skill in gym.skills.all %}
     <div class="skill">
       <span>{{forloop.counter}}</span>

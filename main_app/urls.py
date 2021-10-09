@@ -11,5 +11,7 @@ urlpatterns = [
          views.GymUpdate.as_view(), name="gym_update"),
     path('gym/<int:pk>/delete',
          views.GymDelete.as_view(), name="gym_delete"),
+      path('gym/<int:pk>/skills/new/',
+         views.SkillCreate.as_view(), name="skill_create")
 
 ]
