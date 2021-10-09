@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from .models import gym
 # Create your views here.
@@ -55,3 +55,8 @@ class GymUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse('gym_detail', kwargs={'pk': self.object.pk})
+
+class GymDelete(DeleteView):
+    model = gym
+    template_name = "gym_delete_confirmation.html"
+    success_url = "/gym/"

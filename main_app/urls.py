@@ -9,5 +9,7 @@ urlpatterns = [
     path('gym/<int:pk>/', views.GymDetail.as_view(), name="gym_detail"),
     path('gym/<int:pk>/update',
          views.GymUpdate.as_view(), name="gym_update"),
+    path('gym/<int:pk>/delete',
+         views.GymDelete.as_view(), name="gym_delete"),
 
 ]
