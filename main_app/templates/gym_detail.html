@@ -21,11 +21,11 @@
       </span>
     </a>
   </div>
-  <div class="detail__songs mb-5">
+  <div class="detail__skills mb-5">
     <h3 class="title is-3">Techniques Used</h3>
     <!-- new skills -->
     {% for skill in gym.skills.all %}
-    <div class="skills">
+    <div class="skill">
       <span>{{forloop.counter}}</span>
       <span><b>{{skill.class_took}}</b></span>
       <span><b>{{skill.technique}}</b></span>

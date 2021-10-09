@@ -7,7 +7,7 @@ body {
 h1,
 h2,
 h3 {
-  color: #ffffff;
+  color: #aa1919;
 }
 
 .container {
@@ -75,4 +75,23 @@ img {
 
 .detail__container {
   margin-top: 500px;
+}
+
+.detail__skills {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill {
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 0.1fr 3fr 1fr;
+  border-radius: 5px;
+}
+
+.skill:hover {
+  background-color: hsla(0, 0%, 100%, 0.1);
+  cursor: pointer;
 }
