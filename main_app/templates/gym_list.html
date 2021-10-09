@@ -20,7 +20,7 @@
 </form>
 <div class="gallery">
   {% for gym in gym %}
-  <a href="">
+  <a href="{% url 'gym_detail' gym.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">

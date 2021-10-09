@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 from .models import gym
 # Create your views here.
 
@@ -37,3 +38,7 @@ class GymCreate(CreateView):
     fields = ['name', 'img', 'classes']
     template_name = "gym_create.html"
     success_url = "/gym/"
+
+class GymDetail(DetailView):
+    model = gym
+    template_name = "gym_detail.html"
