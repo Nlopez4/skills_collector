@@ -19,7 +19,9 @@ class gym(models.Model):
 
 class Skill(models.Model):
     technique = models.CharField(max_length=350)
-    gyms = models.ForeignKey(gym, on_delete=models.CASCADE, related_name="skills")
+    class_took = models.CharField(max_length=150)
+    gyms = models.ForeignKey(
+        gym, on_delete=models.CASCADE, related_name="skills")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -21,6 +21,23 @@
       </span>
     </a>
   </div>
+  <div class="detail__songs mb-5">
+    <h3 class="title is-3">Songs</h3>
+    <!-- new skills -->
+    {% for Skill in gym.Skill.all %}
+    <div class="song">
+      <span>{{forloop.counter}}</span>
+      <span><b>{{Skill.technique}}</b></span>
+    </div>
+    {% empty %}
+    <article class="message">
+      <div class="message-header">
+        <p>No Skills Added</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
   <div class="detail__about">
     <h4 class="title is-4">About</h4>
     <p>{{gym.classes}}</p>
