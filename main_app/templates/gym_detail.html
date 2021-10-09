@@ -22,12 +22,13 @@
     </a>
   </div>
   <div class="detail__songs mb-5">
-    <h3 class="title is-3">Songs</h3>
+    <h3 class="title is-3">Techniques Used</h3>
     <!-- new skills -->
-    {% for Skill in gym.Skill.all %}
-    <div class="song">
+    {% for skill in gym.skills.all %}
+    <div class="skills">
       <span>{{forloop.counter}}</span>
-      <span><b>{{Skill.technique}}</b></span>
+      <span><b>{{skill.class_took}}</b></span>
+      <span><b>{{skill.technique}}</b></span>
     </div>
     {% empty %}
     <article class="message">
@@ -39,7 +40,7 @@
   </div>
 
   <div class="detail__about">
-    <h4 class="title is-4">About</h4>
+    <h4 class="title is-4">Classes Avaliable</h4>
     <p>{{gym.classes}}</p>
   </div>
 </div>
