@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
@@ -37,15 +38,20 @@ class GymCreate(CreateView):
     model = gym
     fields = ['name', 'img', 'classes']
     template_name = "gym_create.html"
-    success_url = "/gym/"
+
+    def get_success_url(self):
+        return reverse('gym_detail', kwargs={'pk': self.object.pk})
+
 
 class GymDetail(DetailView):
     model = gym
     template_name = "gym_detail.html"
-    
+
 
 class GymUpdate(UpdateView):
     model = gym
     fields = ['name', 'img', 'classes']
     template_name = "gym_update.html"
-    success_url = "/gym/"
+
+    def get_success_url(self):
+        return reverse('gym_detail', kwargs={'pk': self.object.pk})
