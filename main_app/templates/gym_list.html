@@ -14,6 +14,9 @@
   </div>
   <!--  This anchor tag will redirect back to artist list without a query param -->
   <a class="button is-dark" href="{% url 'gym_list' %}">Clear Search</a>
+  <div class='create_gym'>
+  <a class="button is-dark" href="{% url 'gym_create' %}">Add A Gym</a>
+  </div>
 </form>
 <div class="gallery">
   {% for gym in gym %}
