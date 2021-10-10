@@ -69,8 +69,7 @@ class SkillCreate(View):
 
     def post(self, request, pk):
         technique = request.POST.get("technique")
-        class_took = request.POST.get("class_took")
+        # class_took = request.POST.get("class_took")
         gyms = gym.objects.get(pk=pk)
-        Skill.objects.create(technique=technique,
-                             class_took=class_took, gyms=gyms)
+        Skill.objects.create(technique=technique, gyms=gyms)
         return redirect('gym_detail', pk=pk)

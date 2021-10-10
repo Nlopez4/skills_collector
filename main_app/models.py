@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -19,7 +20,7 @@ class gym(models.Model):
 
 class Skill(models.Model):
     technique = models.CharField(max_length=350)
-    class_took = models.CharField(max_length=150)
+    # class_took = models.CharField(max_length=150),    
     gyms = models.ForeignKey(
         gym, on_delete=models.CASCADE, related_name="skills")
 
