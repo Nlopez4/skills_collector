@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
-from .models import gym, Skill
+from .models import gym, Skill, Mastered
 # Create your views here.
 
 
@@ -16,9 +16,14 @@ class Home(TemplateView):
 class About(TemplateView):
     template_name = "about.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["mastered"] = Mastered.objects.all()
+        return context
+
+
+
 # OTHERS
-
-
 class GymList(TemplateView):
     template_name = "gym_list.html"
 
@@ -73,3 +78,6 @@ class SkillCreate(View):
         gyms = gym.objects.get(pk=pk)
         Skill.objects.create(technique=technique, gyms=gyms)
         return redirect('gym_detail', pk=pk)
+
+
+    

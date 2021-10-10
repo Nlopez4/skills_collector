@@ -1,4 +1,23 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>Home</h1>
 {% endblock %}
+
+<div class="home__mastered">
+  {% for Mastered in mastered %}
+
+  <div class="mastered mb-5">
+    <h3 class="title is-3 has-text-success">{{Mastered.belt}}</h3>
+    <hr />
+
+    {% for skill in Mastered.skills.all %}
+
+    <div class="skill">
+      <span>{{forloop.counter}}</span>
+      <span><b>{{skill.technique}}</b></span>
+    </div>
+
+    {% endfor %}
+  </div>
+
+  {% endfor %}
+</div> 
