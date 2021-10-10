@@ -13,6 +13,17 @@
     <title>Gyms</title>
   </head>
   <body >
+       {% if user.is_authenticated %}
+    <div class="navbar-menu navbar-end">
+        <span class="navbar-item">Welcome: {{user.username}}</span>
+        <a class="navbar-item" href="{% url 'gym_list' %}">Gyms</a>
+        <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+    </div>
+{% else %}
+    <div class="navbar-menu navbar-end">
+       <a class="navbar-item" href="{% url 'login' %}">Log In</a>
+    </div>
+{% endif %}
         <nav class="navbar is-black" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="/">Home</a>
@@ -34,17 +45,7 @@
           {% block content %}{% endblock %}
      
         </div>
-        {% if user.is_authenticated %}
-    <div class="navbar-menu navbar-end">
-        <span class="navbar-item">Welcome: {{user.username}}</span>
-        <a class="navbar-item" href="{% url 'gym_list' %}">Artists</a>
-        <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
-    </div>
-{% else %}
-    <div class="navbar-menu navbar-end">
-       <a class="navbar-item" href="{% url 'login' %}">Log In</a>
-    </div>
-{% endif %}
+   
       </div>
     </div>
   </body>
