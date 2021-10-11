@@ -36,3 +36,7 @@ class Mastered(models.Model):
     def __str__(self):
             return self.belt
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favorite_color = models.CharField(max_length=50)
