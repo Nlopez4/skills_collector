@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.urls import reverse
+from django.shortcuts import render, redirect, reverse
+# from django.urls import reverse
 from django.views import View
 from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
@@ -31,12 +31,11 @@ class GymList(TemplateView):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
         if name != None:
-            context["gym"] = gym.objects.filter(name__icontains=name)
-            # We add a header context that includes the search param
+            context["gym"] = gym.objects.filter(
+                name__icontains=name, user=self.request.user)
             context["header"] = f"Searching for {name}"
         else:
-            context["gym"] = gym.objects.all()
-            # default header for not searching
+            context["gym"] = gym.objects.filter(user=self.request.user)
             context["header"] = "Local Gyms"
         return context
 
@@ -45,8 +44,13 @@ class GymCreate(CreateView):
     model = gym
     fields = ['name', 'img', 'classes']
     template_name = "gym_create.html"
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(GymCreate, self).form_valid(form)
 
     def get_success_url(self):
+        print(self.kwargs)
         return reverse('gym_detail', kwargs={'pk': self.object.pk})
 
 
